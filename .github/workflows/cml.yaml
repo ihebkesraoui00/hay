@@ -9,11 +9,11 @@ jobs:
       - name: sanity-check
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}          
+
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          # Install dvc-gdrive from GitHub
-          pip install git+https://github.com/iterative/dvc.git#egg=dvc[gdrive]
+          pip install git+https://github.com/iterative/dvc-gdrive
           dvc pull
           dvc repro
